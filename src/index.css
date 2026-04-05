@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #1d001d;
+  --color-midu: #09f;
+  --color-midudark: #193cb8;
+}
+
+body {
+  color: #fff;
+  background-color: var(--color-background);
+}
+
+.generic { @apply bg-linear-to-bl from-midudark to-violet-900; }
+.angular { @apply bg-linear-to-bl from-[#0F0F11] to-[#85858b]; }
+.astro { @apply bg-linear-to-bl from-[#BC52EE] to-[#dd93ff]; }
+.aws { @apply bg-linear-to-bl from-[#232F3E] to-[#678bb8]; }
+.css { @apply bg-linear-to-bl from-[#663399] to-[#bd7bff]; }
+.git { @apply bg-linear-to-bl from-[#F05032] to-[#ff7b64]; }
+.html { @apply bg-linear-to-bl from-[#E34F26] to-[#ffa187]; }
+.javascript { @apply bg-linear-to-bl from-[#f7df1e] to-[#948512]; }
+.next { @apply bg-linear-to-bl from-black to-[#aaa]; }
+.node { @apply bg-linear-to-bl from-[#5FA04E] to-[#85e06e]; }
+.php { @apply bg-linear-to-bl from-[#777BB4] to-[#a8aeff]; }
+.react { @apply bg-linear-to-bl from-[#095a70] to-[#61DAFB]; }
+.sql { @apply bg-linear-to-bl from-[#4479A1] to-[#6bbfff]; }
+.svelte { @apply bg-linear-to-bl from-[#FF3E00] to-[#a02800]; }
+.tailwind { @apply bg-linear-to-bl from-[#06B6D4] to-[#08daff]; }
+.typescript { @apply bg-linear-to-bl from-[#3178C6] to-[#61adff]; }
+.python { @apply bg-linear-to-bl from-[#3776ab] to-[#7cc4ff]; }
+.mcp, .bootcamp { @apply bg-linear-to-bl from-midudark to-midu; }
