@@ -4,7 +4,7 @@ import Navigation from '../navigation/Navigation.tsx'
 export default function Header() {
   return <header
     className='
-      size-full m-auto mt-5 px-2 py-3 max-w-6xl z-10
+      size-full m-auto mt-5 px-2 py-3 max-w-6xl z-30
       sticky top-0 left-0 bg-[#000000ab]
       backdrop-blur-xs flex flex-row flex-nowrap gap-1
     '
