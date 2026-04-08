@@ -25,7 +25,7 @@ export default function ResourceList({ resources }: Props) {
     return <h2 className='size-full px-2 py-1 m-auto mt-14 max-w-6xl text-xl text-center'>¡Vaya!<br />No se encontró nada 😒</h2>
   } else {
     return <ul
-      className='size-full px-2 py-1 m-auto max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-1.5'
+      className='size-full px-2 py-1 m-auto max-w-6xl grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-2 auto-rows-fr'
     >
       {resources.map(resource => {
         const finded = currentFavorites.find(i => i.id === resource.id)

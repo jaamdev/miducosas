@@ -1,17 +1,81 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Geist Sans';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff2) format('woff2'),
+       url(@fontsource/geist-sans/files/geist-sans-latin-400-normal.woff) format('woff');
+}
+ 
 @theme {
-  --color-background: #1d001d;
+  --color-background: #0a0a27;
   --color-midu: #09f;
   --color-midudark: #193cb8;
+
+  --color-card: #28303D;
+  --color-primary: #2A344B;
+  --color-secondary: #161B22;
+  --color-tertiary: #4C2B66;
+  --color-text-primary: #F0F6FC;
+  --color-text-secondary: #8B949E;
+  --color-accent: #3B82F6;
+  --color-border: #454a6f;
 }
 
 body {
+  font-family: 'Geist Sans', sans-serif;
   color: #fff;
   background-color: var(--color-background);
 }
 
-.generic { @apply bg-linear-to-bl from-midudark to-violet-900; }
+.menu.open {
+  width: 100%;
+  height: calc(100dvh - 60px);
+  background-color: var(--color-background);
+  font-size: 1.2em;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: initial;
+  align-items: center;
+}
+
+.btnMenu {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .menu {
+    display: none;
+  }
+
+  .btnMenu {
+    display: block;
+  }
+}
+
+
+.category-select {
+  padding: 4px 12px;
+  padding-right: 1.5rem;
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-color: var(--color-secondary);
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  text-transform: capitalize;
+  text-align: center;
+  appearance: none;
+  cursor: pointer;
+}
+
+.generic { @apply bg-linear-to-tr from-card via-secondary to-tertiary from-0% via-60% to-100%; }
 .angular { @apply bg-linear-to-bl from-[#0F0F11] to-[#85858b]; }
 .astro { @apply bg-linear-to-bl from-[#BC52EE] to-[#dd93ff]; }
 .aws { @apply bg-linear-to-bl from-[#232F3E] to-[#678bb8]; }

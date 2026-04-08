@@ -11,16 +11,6 @@ export default function Pagination({ currentPage = 1, totalPages = 1, changePage
   const firstPage = currentPage === 1
   const lastPage = currentPage === totalPages
 
-  const buttonCommonStyles = 'size-6 p-0.5 transition-colors duration-300'
-
-  const buttonPrevStyles = firstPage
-    ? buttonCommonStyles + ' rounded-l ' + 'bg-slate-700 pointer-events-none'
-    : buttonCommonStyles + ' rounded-l ' + 'bg-midudark hover:bg-midu'
-
-  const buttonNextStyles = lastPage
-    ? buttonCommonStyles + ' rounded-r ' + 'bg-slate-700 pointer-events-none'
-    : buttonCommonStyles + ' rounded-r ' + 'bg-midudark hover:bg-midu'
-
   const onChangePage = (e: MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const page = Number(e.currentTarget.dataset.page)
@@ -53,16 +43,18 @@ export default function Pagination({ currentPage = 1, totalPages = 1, changePage
 
   return <nav
     className='
-      size-full px-2 py-1 m-auto max-w-6xl select-none
-      flex flex-row justify-center items-center gap-1
-    '
+        size-full px-2 py-1 m-auto mt-1 mb-5 max-w-6xl
+        w-max bg-secondary rounded-full border-2 border-border
+        flex flex-row justify-center items-center gap-1
+      '
   >
     <a
+      title='Página anterior'
       href={pageUrl(!firstPage ? currentPage - 1 : 1)}
       onClick={onPrevPage}
-      className={buttonPrevStyles}
+      className='w-max px-4 py-2 mr-auto border-2 border-border rounded-full hover:bg-accent transition-colors duration-300 flex flex-row flex-nowrap justify-center items-center gap-2'
     >
-      <PrevIcon />
+      <PrevIcon className='size-5' />Atrás
     </a>
 
     {pages.map(page => <a
@@ -71,21 +63,20 @@ export default function Pagination({ currentPage = 1, totalPages = 1, changePage
       data-page={page}
       onClick={onChangePage}
       className={`
-        size-6 px-2 py-1 font-semibold hover:bg-midu
-        flex flex-col justify-center items-center
-        transition-colors duration-300
-        ${currentPage === page ? 'bg-midu' : 'bg-midudark'}
-      `}
+          size-10 border-2 border-border rounded-xl
+          ${currentPage === page ? 'bg-linear-to-br from-accent to-tertiary shadow-[-2px_-2px_25px_var(--color-accent),2px_2px_25px_var(--color-tertiary)]' : ''} hover:bg-tertiary transition duration-300 flex justify-center items-center
+        `}
     >
       {page}
     </a>)}
 
     <a
+      title='Página siguiente'
       href={pageUrl(!lastPage ? currentPage + 1 : totalPages)}
       onClick={onNextPage}
-      className={buttonNextStyles}
+      className='w-max px-4 py-2 ml-auto border-2 border-border rounded-full hover:bg-accent transition-colors duration-300 flex flex-row flex-nowrap justify-center items-center gap-2'
     >
-      <NextIcon />
+      Siguiente<NextIcon className='size-5' />
     </a>
   </nav>
 }

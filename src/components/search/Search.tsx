@@ -57,55 +57,59 @@ export default function Search({ changeSearch }: Props) {
     changeSearch(textSearch, newCategory)
   }
 
-  return <form
-    ref={formRef}
-    role='search-form'
-    autoComplete='off'
-    onSubmit={handleSubmit}
-    className='
-      size-full px-2 py-1 m-auto max-w-6xl
-      grid grid-cols-[min-content_1fr_min-content_min-content]
-      justify-center items-center gap-0.5 text-black
-    '
+  return <div
+    className='size-full m-auto px-2 py-1 max-w-6xl'
   >
-    <label
-      htmlFor='input-search'
-      className='p-1 bg-white rounded-l'
-    >
-      <SearchIcon
-        className='size-6'
-      />
-    </label>
-    <input
-      id='input-search'
-      type='search'
-      name={idSearch}
-      placeholder='cursos, sql, agentes...'
-      value={textSearch}
-      onChange={handleSearch}
-      className='p-1 bg-white'
-    />
-    <select
-      id='input-select'
-      name={idCategory}
-      value={selectedCategory}
-      onChange={handleCategory}
-      className='h-full p-1 bg-white capitalize'
-    >
-      {Object.values(Category).map(option => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-    <input
-      type='submit'
-      value='Buscar'
+    <form
+      ref={formRef}
+      role='search-form'
+      autoComplete='off'
+      onSubmit={handleSubmit}
       className='
-          px-2 py-1 bg-white rounded-r
-          hover:text-white hover:bg-midu
-          disabled:bg-gray-300 cursor-pointer
-        '
-    />
-  </form>
+      p-2 my-5
+      bg-secondary border border-border rounded-full
+      flex flex-row items-center gap-2
+    '
+    >
+      <label
+        htmlFor='input-search'
+        className='mx-1'
+      >
+        <SearchIcon
+          className='size-6'
+        />
+      </label>
+      <input
+        id='input-search'
+        type='search'
+        name={idSearch}
+        placeholder='Buscar recursos...'
+        value={textSearch}
+        onChange={handleSearch}
+        className='w-full outline-0'
+      />
+      <select
+        id='input-select'
+        name={idCategory}
+        value={selectedCategory}
+        onChange={handleCategory}
+        className='category-select'
+      >
+        {Object.values(Category).map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      <input
+        type='submit'
+        value='Buscar'
+        className='
+            px-3 py-1 text-center border border-border rounded-full
+            bg-linear-to-tr from-accent to-tertiary cursor-pointer
+            hover:shadow-[-10px_0_20px_var(--color-accent),10px_0_20px_var(--color-tertiary)] transition-all duration-300
+          '
+      />
+    </form>
+  </div>
 }

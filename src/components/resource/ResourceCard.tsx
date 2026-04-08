@@ -1,4 +1,5 @@
-import { Link } from 'react-router'
+import type { MouseEvent } from 'react'
+import { Link, useNavigate } from 'react-router'
 import {
   LinkIcon,
   VideoIcon,
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export default function ResourceCard({ resource, addedToFavs, handleFavs }: Props) {
+  const navigate = useNavigate()
   const {
     id,
     url,
@@ -35,67 +37,79 @@ export default function ResourceCard({ resource, addedToFavs, handleFavs }: Prop
     ? title.toLowerCase()
     : 'generic'
 
-  return <li
-    className='
-      size-full grid grid-cols-[min-content_min-content_1fr]
-    '
+  const handleExternalClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.stopPropagation()
+  }
+
+  const handleCardClick = () => navigate(`/${id}`)
+
+  const handleFavsClick = (
+    e: MouseEvent<HTMLButtonElement>,
+    addedToFavs: boolean,
+    resource: IResource
+  ) => {
+    e.stopPropagation()
+    handleFavs(addedToFavs, resource)
+  }
+
+  return <div
+    role='link'
+    tabIndex={0}
+    title='Ver más ...'
+    onClick={handleCardClick}
+    className={`
+      ${backgroundStyle}
+      p-4 border border-border relative overflow-hidden cursor-pointer
+      grid grid-rows-[max-content_1fr_min-content] rounded-xl
+      before:bg-card before:absolute before:top-0 before:left-0
+      before:size-full before:opacity-0 [.generic]:hover:before:opacity-100
+      hover:before:opacity-30 before:transition-all
+      before:duration-300 before:z-0 group
+    `}
   >
+    {
+      image && <img
+        src={`/${isItACourse ? 'icons' : 'books'}/${image}`}
+        alt={`Imagen del logo ${title}`}
+        className='
+          w-24 absolute -bottom-5 -left-5
+          rotate-12 opacity-75 z-0 group-hover:rotate-24
+          transition-transform duration-300
+        '
+      />
+    }
+    <h2 className='text-text-primary text-xl font-semibold z-10'>{prefixTitle}</h2>
+    <p className='text-text-primary my-1 z-10'>{description}</p>
     <div
       className='
-        h-min py-1 pl-1 mb-1 bg-white rounded-l-lg
-        flex flex-col flex-nowrap justify-start items-center gap-1
+        flex flex-row flex-nowrap justify-between items-center gap-1
       '
     >
-      {url && <Link
-        to={url}
-        rel='noopener noreferrer nofollow external'
-        target='_blank'
-        title='Ir al recurso'
-      >
-        <LinkIcon className='size-6 text-black hover:text-slate-500 transition-colors duration-300' />
-      </Link>}
-      {source && <Link
-        to={source}
-        rel='noopener noreferrer nofollow external'
-        target='_blank'
-        title='Ir a la fuente'
-      >
-        <ExternalLinkIcon className='size-6 text-black hover:text-slate-500 transition-colors duration-300' />
-      </Link>}
-      <button
-        title={addedToFavs ? 'Eliminar de favoritos' : 'Añadir a favoritos'}
-        onClick={() => handleFavs(!addedToFavs, resource)}
-      >
+      <div className='z-10'>
         {
-          addedToFavs
-            ? <StorageMinusIcon className='size-6 text-red-500 cursor-pointer' />
-            : <StoragePlusIcon className='size-6 text-black hover:text-slate-500 transition-colors duration-300 cursor-pointer' />
+          vids.length !== 0 && <h3 className='text-text-primary flex flex-row flex-nowrap justify-center items-center gap-2'>{vids.length}<VideoIcon className='size-6' /></h3>
         }
-      </button>
+      </div>
+      <nav
+        className={`
+          ${category === Category.Courses ? 'text-text-primary' : 'text-text-secondary'} flex flex-row flex-nowrap
+          justify-center items-center gap-2 z-10
+        `}
+      >
+        <Link title='Ir al recurso' onClick={handleExternalClick} to={url} rel='noopener noreferrer nofollow external' target='_blank'><LinkIcon className='size-6 hover:text-text-primary transition-colors duration-300' /></Link>
+        <Link title='Ir a la fuente' onClick={handleExternalClick} to={source} rel='noopener noreferrer nofollow external' target='_blank'><ExternalLinkIcon className='size-6 hover:text-text-primary transition-colors duration-300' /></Link>
+        <button
+          title='Añadir a favoritos'
+          onClick={(e) => handleFavsClick(e, !addedToFavs, resource)}
+          className='cursor-pointer size-6 hover:text-text-primary transition-colors duration-300'
+        >
+          {
+            addedToFavs
+              ? <StorageMinusIcon />
+              : <StoragePlusIcon />
+          }
+        </button>
+      </nav>
     </div>
-    <div className='w-1 h-full mr-0.5 bg-white rounded-bl-lg'></div>
-    <Link
-      to={id}
-      className={`
-        p-1 rounded-r-lg group
-        relative overflow-hidden ${backgroundStyle}  
-      `}
-    >
-      {(image && isItACourse) && <img
-        width={24}
-        height={24}
-        src={'/icons/' + image}
-        alt={`Imagen del recurso ${title}`}
-        className='
-          size-18 absolute -bottom-3 -left-3 rotate-12 z-10
-          group-hover:rotate-20 transition duration-300
-        '
-      />}
-      {vids && vids.length > 0 && <h4 className='px-2 py-0.5 text-white text-sm font-semibold absolute bottom-0 right-0 z-20 flex flex-row flex-nowrap justify-center items-center gap-1'><VideoIcon />{vids.length}</h4>}
-      <h3 className='w-max px-2 py-1 bg-white text-black text-sm rounded-tl absolute z-30 bottom-0 right-0 translate-y-10 group-hover:translate-y-0 transition-transform duration-300'>Ver más...</h3>
-      <h2 className='text-white font-semibold relative z-20'>{prefixTitle}</h2>
-      <hr className='my-1 text-white relative z-20' />
-      <p className='text-white text-sm relative z-20'>{description}</p>
-    </Link>
-  </li>
+  </div>
 }

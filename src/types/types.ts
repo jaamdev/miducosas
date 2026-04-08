@@ -25,10 +25,10 @@ export interface INewFeature {
 export interface IResource {
   id: `${string}-${string}-${string}-${string}-${string}`
   title: string
-  description?: string
-  image?: string
+  description: string
+  image: string
   url: string
-  vids?: IVids[]
+  vids: IVids[]
   category: CategoryType
   tags: string[]
   source: string

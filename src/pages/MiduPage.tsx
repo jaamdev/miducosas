@@ -16,7 +16,7 @@ function Item({ title = '', img = '', url = '' }) {
     '
   >
     <img src={img} className='w-6 rounded-md transition-all duration-300 group-hover:-translate-y-0.5' alt={'Logotipo de ' + title} />
-    <h3 className='text-sm font-semibold transition-all duration-300 group-hover:-translate-y-0.5'>{title}</h3>
+    <h3 className='text-sm font-medium transition-all duration-300 group-hover:-translate-y-0.5'>{title}</h3>
     <ExternalLinkIcon className='w-4 absolute top-1 right-1 z-10' />
   </Link>
 }
