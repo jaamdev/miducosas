@@ -43,7 +43,7 @@ export default function PlayVid({ url, changeVid }: { url: string, changeVid: (u
     open={url.length !== 0}
     onClick={() => exitPlayer()}
     className='
-      size-full fixed top-0 left-0 z-20 bg-[#30008870]
+      size-full fixed top-0 left-0 z-40 bg-[#30008870]
       flex justify-center items-center
     '
   >
