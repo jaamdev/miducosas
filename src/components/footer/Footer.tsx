@@ -2,8 +2,7 @@ export default function Footer() {
   return <footer
     className='
         w-full m-auto mt-10 pl-5 py-2 max-w-6xl bg-secondary
-        border-t border-border sticky bottom-0 left-0
-        flex flex-nowrap gap-5 z-30
+        sticky bottom-0 left-0 flex flex-nowrap gap-5 z-30
       '
   >
     <ul
