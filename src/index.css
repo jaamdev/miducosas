@@ -30,6 +30,27 @@ body {
   background-color: var(--color-background);
 }
 
+@keyframes text {
+  50% {
+    color: black;
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 1px 5px 2px #E65C00;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 1px 5px 2px #18B201;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 1px 5px 2px #0456C8;
+  }
+}
+
 .menu.open {
   width: 100%;
   height: calc(100dvh - 60px);
@@ -57,7 +78,6 @@ body {
     display: block;
   }
 }
-
 
 .category-select {
   padding: 4px 12px;
