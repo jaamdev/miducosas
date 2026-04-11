@@ -55,6 +55,11 @@ const websites = [
     img: "reactjswiki.svg"
   },
   {
+    title: "Cursoreact.dev",
+    url: "https://cursoreact.dev",
+    img: "reactjswiki.svg"
+  },
+  {
     title: "Reactjs.wiki",
     url: "https://reactjs.wiki",
     img: "reactjswiki.svg"

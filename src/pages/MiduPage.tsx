@@ -3,17 +3,18 @@ import { ExternalLinkIcon } from '../components/Icons.tsx'
 import socialMedia from '../consts/socialMedia.ts'
 import websites from '../consts/websites.ts'
 
-function Item({ title = '', img = '', url = '' }) {
+function Item({ title = '', img = '', url = '', className = '' }) {
   return <Link
     to={url}
     title={url}
     target='_blank'
     rel='noopener noreferrer nofollow external'
-    className='
+    className={`
       w-full p-2 rounded-md text-black bg-slate-200 group
       hover:bg-slate-300 transition-colors duration-300 relative
       flex flex-row flex-nowrap not-sm:justify-center items-center gap-2
-    '
+      ${className}
+    `}
   >
     <img src={img} className='w-6 rounded-md transition-all duration-300 group-hover:-translate-y-0.5' alt={'Logotipo de ' + title} />
     <h3 className='text-sm font-medium transition-all duration-300 group-hover:-translate-y-0.5'>{title}</h3>
@@ -53,6 +54,7 @@ export default function MiduPage() {
               url={url}
               title={title}
               img={'/sites/' + img}
+              className='md:last:col-span-2 md:last:-col-end-1'
             />)}
         </div>
       </div>
