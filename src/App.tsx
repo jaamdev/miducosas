@@ -15,28 +15,30 @@ import Footer from './components/footer/Footer.tsx'
 import { StorageMinusIcon, StoragePlusIcon } from './components/Icons.tsx'
 
 export default function App() {
-  return <main>
+  return <div className='min-h-screen flex flex-col'>
     <Header />
-    <Toaster
-      duration={5_000}
-      richColors={true}
-      closeButton={true}
-      position={'bottom-right'}
-      icons={{
-        success: <StoragePlusIcon />,
-        error: <StorageMinusIcon />
-      }}
-    />
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path='/:id' element={<ResourceIdPage />} />
-        <Route path='/changes' element={<ChangesPage />} />
-        <Route path='/favorites' element={<FavoritePage />} />
-        <Route path='/midudev' element={<MiduPage />} />
-        <Route path='*' element={<NotFoundPage />} />
-      </Routes>
-    </Suspense>
+    <main className='flex-1'>
+      <Toaster
+        duration={5_000}
+        richColors={true}
+        closeButton={true}
+        position={'bottom-right'}
+        icons={{
+          success: <StoragePlusIcon />,
+          error: <StorageMinusIcon />
+        }}
+      />
+      <Suspense fallback={<Loading />}>
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path='/:id' element={<ResourceIdPage />} />
+          <Route path='/changes' element={<ChangesPage />} />
+          <Route path='/favorites' element={<FavoritePage />} />
+          <Route path='/midudev' element={<MiduPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+    </main>
     <Footer />
-  </main>
+  </div>
 }
