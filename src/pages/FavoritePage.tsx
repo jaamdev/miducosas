@@ -32,9 +32,9 @@ export default function FavoritePage() {
             ? <button
               title='Eliminar todos los elementos guardados en favoritos'
               onClick={() => clearAll()}
-              className='px-3 py-1 text-center border border-border rounded-full bg-linear-to-tr from-accent to-tertiary cursor-pointer hover:shadow-[-10px_0_20px_var(--color-accent),10px_0_20px_var(--color-tertiary)] transition-all duration-300'
+              className='px-3 py-1 my-5 text-center border border-border rounded-full bg-linear-to-tr from-accent to-tertiary cursor-pointer hover:shadow-[-10px_0_20px_var(--color-accent),10px_0_20px_var(--color-tertiary)] transition-all duration-300'
             >Eliminar todo</button>
-            : <h2 className='my-10'>👉 La lista está vacía 😞</h2>
+            : <h2 className='my-15'>👉 La lista está vacía 😞</h2>
         }
       </div>
 
