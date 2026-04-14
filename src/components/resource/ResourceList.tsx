@@ -32,7 +32,7 @@ export default function ResourceList({ resources }: Props) {
   if (firstTime && resourcesNum === 0) {
     return <>
       <h2 className='size-full px-2 py-1 m-auto mt-14 max-w-6xl text-xl text-center'>¡Hola! 👋<br />¿Listo para mover las manitas?</h2>
-      <div className='min-h-32 px-4 py-2 m-auto mt-2 max-w-6xl flex flex-row flex-wrap justify-center items-center gap-2 border-2 border-border bg-secondary rounded-xl'>
+      <div className='min-h-32 px-4 py-2 m-auto mt-10 max-w-xl flex flex-row flex-wrap justify-center items-center gap-2 border-2 border-border bg-secondary rounded-xl'>
         <h3 className='mr-2'>¿ Qué toca hoy ? 👉 </h3>
         <AnchorExample href='Cursos' />
         <AnchorExample href='Skills' />
