@@ -45,6 +45,11 @@ const websites = [
     img: "adventjs.png"
   },
   {
+    title: "Javascript100.dev",
+    url: "https://javascript100.dev",
+    img: "javascript100.svg"
+  },
+  {
     title: "Alg0.dev",
     url: "https://alg0.dev",
     img: "alg0.svg"
