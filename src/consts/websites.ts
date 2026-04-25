@@ -20,6 +20,11 @@ const websites = [
     img: "autoskills.svg"
   },
   {
+    title: "Librosgratis.dev",
+    url: "https://librosgratis.dev",
+    img: "librosgratis.svg"
+  },
+  {
     title: "100cosas.dev",
     url: "https://100cosas.dev",
     img: "100cosas.svg"

@@ -54,7 +54,10 @@ export default function MiduPage() {
               url={url}
               title={title}
               img={'/sites/' + img}
-              className='col-span-1 md:last:col-span-2'
+              className={
+                websites.length % 2 === 0
+                  ? '' : 'col-span-1 md:last:col-span-2'
+              }
             />)}
         </div>
       </div>
