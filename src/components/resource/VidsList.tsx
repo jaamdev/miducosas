@@ -47,7 +47,7 @@ export default function VidsList({ vids }: Props) {
     '
     >
       {paginatedVidsList.map(({ title, demo, code, url }) => {
-        const pathname = new URL(url).pathname.substring(1)
+        const pathname = url.split('/').pop()
         const urlImg = `https://img.youtube.com/vi/${pathname}/maxresdefault.jpg`
 
         return <div
