@@ -112,4 +112,5 @@ body {
 .tailwind { @apply bg-linear-to-bl from-[#06B6D4] to-[#08daff]; }
 .typescript { @apply bg-linear-to-bl from-[#3178C6] to-[#61adff]; }
 .python { @apply bg-linear-to-bl from-[#3776ab] to-[#7cc4ff]; }
+.docker { @apply bg-linear-to-bl from-[#2496ED] to-[#155a8f]; }
 .mcp, .bootcamp { @apply bg-linear-to-bl from-midudark to-midu; }
